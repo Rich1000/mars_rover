@@ -27,7 +27,7 @@ An initial survey of obstacles in the grid has already been conducted, and is av
 separate pre-loaded list of 2-tuples, each giving a point on the grid that should be treated as
 impassable.
 
-# PRIMARY OBJECTIVES
+## PRIMARY OBJECTIVES
 
 1. Implement a library capable of modelling the basic movement of the rover for a list of
 valid input commands.
@@ -39,7 +39,7 @@ with polar coordinates.
 at its next destination the rover should halt at the last valid location & report its current
 position and location of the obstacle.
 
-# SECONDARY OBJECTIVES
+## SECONDARY OBJECTIVES
 
 4. Suggest and implement a revised control scheme to reduce the storage requirements for
 input commands
