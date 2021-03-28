@@ -29,31 +29,44 @@ def test_rover_move_forward_and_back():
     assert rover.position == (0, 2, "N")
 
     rover.instruct(["B", "B", "B"])
-    assert rover.position == (0, -1, "N")
+    assert rover.position == (0, 9, "N")
 
 
 def test_rover_simple_path():
     rover = Rover(start_position=(1, 1, "E"), grid_dimensions=(10, 10))
-
     rover.instruct(["F", "F", "L", "B", "L", "F"])
     assert rover.position == (2, 0, "W")
 
 
-def test_grid_wrapping_x():
+def test_grid_wrapping_max_x():
     """An instruction to move beyond the x-axis grid limits results in the rover
     position being wrapped to the grid origin"""
 
     rover = Rover(start_position=(10, 10, "E"), grid_dimensions=(10, 10))
-
     rover.instruct(["F"])
     assert rover.position == (1, 10, "E")
 
 
-def test_grid_wrapping_y():
-    """An instruction to move beyond the y-axis grid limits results in the rover
-    position being wrapped to the grid origin"""
+def test_grid_wrapping_min_x():
+    rover = Rover(start_position=(0, 10, "E"), grid_dimensions=(10, 10))
+    rover.instruct(["B"])
+    assert rover.position == (9, 10, "E")
 
+
+def test_grid_wrapping_max_y():
     rover = Rover(start_position=(10, 10, "N"), grid_dimensions=(10, 10))
-
     rover.instruct(["F"])
     assert rover.position == (10, 1, "N")
+
+
+def test_grid_wrapping_min_y():
+    rover = Rover(start_position=(10, 0, "N"), grid_dimensions=(10, 10))
+    rover.instruct(["B"])
+    assert rover.position == (10, 9, "N")
+
+
+def test_rover_complex_path():
+    rover = Rover(start_position=(1, 8, "N"), grid_dimensions=(10, 10))
+
+    rover.instruct(["F", "F", "B", "L", "F", "F"])
+    assert rover.position == (9, 9, "W")

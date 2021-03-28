@@ -42,6 +42,8 @@ class Rover:
         x_distance = self.rover_distance_to_x_distance(distance)
         if self.x == self.max_x and x_distance == 1:
             self.x = 1
+        elif self.x == 0 and x_distance == -1:
+            self.x = self.max_x - 1
         else:
             self.x += x_distance
 
@@ -49,6 +51,8 @@ class Rover:
         y_distance = self.rover_distance_to_y_distance(distance)
         if self.y == self.max_y and y_distance == 1:
             self.y = 1
+        elif self.y == 0 and y_distance == -1:
+            self.y = self.max_y - 1
         else:
             self.y += y_distance
 
