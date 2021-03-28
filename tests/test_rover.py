@@ -70,3 +70,9 @@ def test_rover_complex_path():
 
     rover.instruct(["F", "F", "B", "L", "F", "F"])
     assert rover.position == (9, 9, "W")
+
+
+def test_obstacle_avoidance():
+    rover = Rover(start_position=(0, 0, "N"), grid_dimensions=(100, 100), obstacles=[(0, 2)])
+    rover.instruct(["F", "F", "F"])
+    assert rover.position == (0, 1, "N")
